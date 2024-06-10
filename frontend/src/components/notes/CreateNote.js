@@ -27,7 +27,8 @@ export default function CreateNote() {
       await axios.post("http://localhost:4600/note", newNote);
       return history("/");
     } catch (err) {
-      window.location.href = "/";
+      // window.location.href = "/";
+      console.log(err);
     }
   };
 

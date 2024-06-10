@@ -1,9 +1,8 @@
 const Note = require("../models/noteModel");
-
-const userId = "1234";
+const cookie = require("./Cookies");
 const getNotes = async (req, res) => {
   try {
-    const notes = await Note.find({ user_id: userId }); 
+    const notes = await Note.find({ user_id: cookie.get('userId') }); 
     res.json(notes);
   } catch (err) {
     return res.status(500).json({ msg: err.message });
@@ -16,8 +15,9 @@ const createNote = async (req, res) => {
       title,
       content,
       date,
-      user_id: userId,
+      user_id: cookie.get('userId'),
     });
+    console.log(cookie.get('userId'));
     await newNote.save();
     res.json({ msg: "Created a Note" });
   } catch (err) {
@@ -56,8 +56,18 @@ const getNote = async (req, res) => {
     return res.status(500).json({ msg: err.message });
   }
 }
+const getUserId = async (req, res) => {
+  try {
+    cookie.set('userId',req.params.id);
+    // console.log(req.params.id);
+    res.json('ok');
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
+  }
+}
 
 module.exports = {
+  getUserId,
   getNotes,
   getNote,
   createNote,
