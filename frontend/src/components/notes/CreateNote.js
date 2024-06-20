@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import iaxios from "../../axiosSetUp";
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../cookie";
 export default function CreateNote() {
@@ -24,7 +24,7 @@ export default function CreateNote() {
         content,
         date,
       };
-      await axios.post("http://localhost:4600/note", newNote,{
+      await iaxios.post("http://localhost:4600/note", newNote,{
         headers:{
           Authorization: `Bearer ${getCookie('usertoken')}`
         }

@@ -1,8 +1,7 @@
 const Note = require("../models/noteModel");
-const cookie = require("./Cookies");
 const getNotes = async (req, res) => {
   try {
-    const notes = await Note.find({ user_id: req.user}); 
+    const notes = await Note.find({ user_id: req.user.userId}); 
     res.json(notes);
   } catch (err) {
     return res.status(500).json({ msg: err.message });
@@ -15,7 +14,7 @@ const createNote = async (req, res) => {
       title,
       content,
       date,
-      user_id: req.user,
+      user_id: req.user.userId,
     });
     await newNote.save();
     res.json({ msg: "Created a Note" });

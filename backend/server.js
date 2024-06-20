@@ -4,9 +4,14 @@ const cors = require("cors");
 const { getNotes, getNote, createNote, updateNote, deleteNote, getUserId } = require("./controllers/noteCtrl");
 const jwt = require("jsonwebtoken");
 const app = express();
+const cookieParser = require('cookie-parser');
 
-app.use(cors());
+app.use(cors({
+  origin:true,
+  credentials:true
+}));
 app.use(express.json());
+app.use(cookieParser());
 const URI = "mongodb://localhost:27017/mongo-golang";
 const jwtSecret = 'fasefraw4r5r3wq45wdfgw34twdfg';
 
