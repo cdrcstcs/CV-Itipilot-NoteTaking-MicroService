@@ -4,17 +4,19 @@ import { format } from "timeago.js";
 import axios from "axios";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import { getCookie } from "../../cookie";
+// import { getCookie } from "../../cookie";
 import iaxios from "../../axiosSetUp";
 export default function Home() {
   const [notes, setNotes] = useState([]);
 
   const getNotes = async () => {
-    const res = await iaxios.get("http://localhost:4600/note",{
-      headers:{
-        Authorization: `Bearer ${getCookie('usertoken')}`
-      }
-    });
+    const res = await iaxios.get("http://localhost:4600/note",
+    // {
+    //   headers:{
+    //     Authorization: `Bearer ${getCookie('usertoken')}`
+    //   }
+    // }
+    );
     setNotes(res.data);
   };
 

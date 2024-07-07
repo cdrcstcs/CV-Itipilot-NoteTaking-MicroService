@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import iaxios from "../../axiosSetUp";
 import { useNavigate } from "react-router-dom";
-import { getCookie } from "../../cookie";
+// import { getCookie } from "../../cookie";
 export default function CreateNote() {
   const [note, setNote] = useState({
     title: "",
@@ -24,11 +24,13 @@ export default function CreateNote() {
         content,
         date,
       };
-      await iaxios.post("http://localhost:4600/note", newNote,{
-        headers:{
-          Authorization: `Bearer ${getCookie('usertoken')}`
-        }
-      });
+      await iaxios.post("http://localhost:4600/note", newNote,
+      //   {
+      //   headers:{
+      //     Authorization: `Bearer ${getCookie('usertoken')}`
+      //   }
+      // }
+      );
       return history("/");
     } catch (err) {
       // window.location.href = "/";

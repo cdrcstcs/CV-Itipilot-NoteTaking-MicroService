@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-
+import mongoose  from "mongoose";
 const noteSchema = new mongoose.Schema(
   {
     title: {
@@ -23,5 +22,6 @@ const noteSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+// noteSchema.index({ _id:1});
 const Note = mongoose.model("Note", noteSchema);
-module.exports = Note;
+export default Note;

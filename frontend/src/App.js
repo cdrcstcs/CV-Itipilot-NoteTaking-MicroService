@@ -1,10 +1,10 @@
 import React from "react";
 import Notes from "./components/Notes";
-import { getCookie } from "./cookie";
+// import { getCookie } from "./cookie";
 function App() {
-  if (!getCookie('usertoken')){
-    return null;
-  }
+  // if (!getCookie('usertoken')){
+  //   return null;
+  // }
   return (
     <div className="App">
       <Notes/>
