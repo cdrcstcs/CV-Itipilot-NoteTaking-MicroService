@@ -55,18 +55,8 @@ const getNote = async (req, res) => {
     return res.status(500).json({ msg: err.message });
   }
 }
-// const getUserId = async (req, res) => {
-//   try {
-//     cookie.set('userId',req.params.id);
-//     // console.log(req.params.id);
-//     res.json('ok');
-//   } catch (err) {
-//     return res.status(500).json({ msg: err.message });
-//   }
-// }
 
 export {
-  // getUserId,
   getNotes,
   getNote,
   createNote,
